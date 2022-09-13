@@ -15,12 +15,20 @@ Consider the following models:
 class Product extends Model {}
 Product.init({
   title: Sequelize.STRING
-}, { sequelize, modelName: 'product' });
+}, {
+  sequelize,
+  modelName: 'product'
+});
+
 class User extends Model {}
 User.init({
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING
-}, { sequelize, modelName: 'user' });
+}, {
+  sequelize,
+  modelName: 'user'
+});
+
 class Address extends Model {}
 Address.init({
   type: DataTypes.STRING,
@@ -29,12 +37,14 @@ Address.init({
   city: Sequelize.STRING,
   state: Sequelize.STRING,
   zip: Sequelize.STRING,
-}, { sequelize, modelName: 'address' });
+}, {
+  sequelize,
+  modelName: 'address'
+});
 
 // We save the return values of the association setup calls to use them later
 Product.User = Product.belongsTo(User);
 User.Addresses = User.hasMany(Address);
-// Also works for `hasOne`
 ```
 
 A new `Product`, `User`, and one or more `Address` can be created in one step in the following way:
